@@ -1,0 +1,19 @@
+    private TerrainMatCtr selectedTerrainType;
+
+        // 获取枚举的所有值
+        TerrainMatCtr[] terrainMatCtrs = (TerrainMatCtr[])Enum.GetValues(typeof(TerrainMatCtr));
+
+        // 获取枚举值的名称
+        string[] terrainTypeNames = Array.ConvertAll(terrainMatCtrs, t => t.ToString());
+
+        // 获取当前选中的索引
+        int selectedIndex = Array.IndexOf(terrainMatCtrs, selectedTerrainType);
+
+        // 创建选择框
+        selectedIndex = GUILayout.Popup(selectedIndex, terrainTypeNames);
+
+        // 更新选中的枚举值
+        selectedTerrainType = terrainMatCtrs[selectedIndex];
+
+        // 显示当前选中的值
+        EditorGUILayout.LabelField("Selected Terrain Type:", selectedTerrainType.ToString());
